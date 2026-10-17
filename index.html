@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Password Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="top">
+      <h1>Password Generator</h1>
+      <p class="hint">Create a strong, random password in one click.</p>
+    </header>
+
+    <div class="layout">
+      <!-- Options -->
+      <section class="options" aria-labelledby="opt-title">
+        <h2 id="opt-title">Customize</h2>
+
+        <div class="length-row">
+          <label for="length-slider">Password length</label>
+          <input id="length-number" class="length-number" type="number" min="4" max="64" value="16" aria-label="Password length as a number">
+        </div>
+        <input id="length-slider" class="slider" type="range" min="4" max="64" value="16">
+        <div class="slider-scale" aria-hidden="true"><span>4</span><span>64</span></div>
+
+        <fieldset class="types">
+          <legend>Include characters</legend>
+          <label class="check"><input type="checkbox" id="opt-upper" checked><span class="box"></span><span class="check-text">Uppercase letters <small>A B C</small></span></label>
+          <label class="check"><input type="checkbox" id="opt-lower" checked><span class="box"></span><span class="check-text">Lowercase letters <small>a b c</small></span></label>
+          <label class="check"><input type="checkbox" id="opt-numbers" checked><span class="box"></span><span class="check-text">Numbers <small>1 2 3</small></span></label>
+          <label class="check"><input type="checkbox" id="opt-symbols" checked><span class="box"></span><span class="check-text">Symbols <small>! @ #</small></span></label>
+        </fieldset>
+
+        <label class="check extra">
+          <input type="checkbox" id="opt-similar"><span class="box"></span>
+          <span class="check-text">Avoid look-alike characters <small>O 0 l 1 I</small></span>
+        </label>
+      </section>
+
+      <!-- Result -->
+      <section class="result" aria-labelledby="res-title">
+        <h2 id="res-title">Your password</h2>
+
+        <div class="output-wrap">
+          <output id="password" class="password" for="length-slider opt-upper opt-lower opt-numbers opt-symbols"></output>
+          <button type="button" id="toggle-visibility" class="icon-btn" aria-pressed="false" aria-label="Hide password">🙈</button>
+        </div>
+
+        <p id="message" class="message" role="alert"></p>
+
+        <div class="strength">
+          <div class="strength-head">
+            <span>Strength</span>
+            <strong id="strength-label">–</strong>
+          </div>
+          <div class="meter" id="meter" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+          <p id="entropy" class="entropy"></p>
+        </div>
+
+        <div class="actions">
+          <button type="button" id="generate" class="primary">🔄 Generate new</button>
+          <button type="button" id="copy" class="secondary">📋 Copy</button>
+        </div>
+        <p id="toast" class="toast" role="status"></p>
+
+        <p class="note">🔒 Passwords are created in your browser and are never saved or sent anywhere.</p>
+      </section>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
